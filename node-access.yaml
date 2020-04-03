@@ -19,3 +19,16 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: $NAMESPACE-user-node-readonly-access
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: $NAMESPACE-user-cluster-view
+subjects:
+- kind: ServiceAccount
+  name: $NAMESPACE-user
+  namespace: $NAMESPACE
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
